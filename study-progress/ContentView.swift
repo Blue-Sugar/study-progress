@@ -7,27 +7,22 @@
 
 import SwiftUI
 
-let books = ["book1", "book2"]
+var book1 = Book(title: "book1", author: "A")
+var book2 = Book(title: "book2", author: "B")
+let books: [Book] = [book1, book2]
 
 struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
                 ForEach(books, id: \.self) { book in
-                    NavigationLink(destination: BookView(name: book)) {
-                        Text(book)
+                    NavigationLink(destination: BookView(book: book)) {
+                        Text(book.title)
                     }
                             .navigationBarTitle("books")
                 }
             }
         }
-    }
-}
-
-struct BookView: View {
-    var name = "hello"
-    var body: some View {
-        Text("\(name)")
     }
 }
 
